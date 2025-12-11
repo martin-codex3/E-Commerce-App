@@ -1,14 +1,23 @@
 from fastapi import FastAPI
 from routes.auth.AuthRoutes import auth_router
+from contextlib import asynccontextmanager
+
 
 # the app version here
 app_version = "v1"
+
+# the life span for the app here
+async def life_span(app: FastAPI):
+    print("The app is starting")
+    yield
+    print("The app is shutting down")
 
 # we will register the routes here
 app = FastAPI(
     version=app_version,
     title="The Backend Api for the modern E-Commerce App",
     description="This app will have all the advanced features to match every business needs",
+    lifespan=life_span
 )
 
 # we will add the app here

@@ -3,7 +3,7 @@ from pydantic_settings import SettingsConfigDict, BaseSettings
 
 # we will attempt to get the environment settings here
 class AppConfig(BaseSettings):
-    SQLITE_DATABASE: str
+    DATABASE_URL: str
 
     # using the settings dict here
     model_config = SettingsConfigDict(
