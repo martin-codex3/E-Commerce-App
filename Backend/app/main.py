@@ -1,14 +1,16 @@
 from fastapi import FastAPI
-from routes.auth.AuthRoutes import auth_router
+from app.routes.auth.AuthRoutes import auth_router
 from contextlib import asynccontextmanager
-
+from app.connection.db_connection import db_init
 
 # the app version here
 app_version = "v1"
 
 # the life span for the app here
+@asynccontextmanager
 async def life_span(app: FastAPI):
     print("The app is starting")
+    await db_init()
     yield
     print("The app is shutting down")
 
