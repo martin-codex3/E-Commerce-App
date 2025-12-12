@@ -1,5 +1,6 @@
 from sqlalchemy.ext.asyncio.session import AsyncSession
 from app.models.products.products_model import ProductModel
+from app.schemas.products.ProductsSchema import CreateProductSchema, UpdateProductSchema, ProductsSchema
 
 
 class ProductsService:
