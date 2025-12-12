@@ -13,4 +13,4 @@ class AppConfig(BaseSettings):
 
 
 # we will create the object for the config class here
-app_config = AppConfig()
+AppConfig = AppConfig()
