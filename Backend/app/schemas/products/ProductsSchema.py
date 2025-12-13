@@ -31,5 +31,5 @@ class UpdateProductSchema(BaseModel):
     product_category: str
     product_price: str
     product_image: str
-    created_ate: datetime = Field(default=datetime.now())
+    created_at: datetime = Field(default=datetime.now())
     updated_at: datetime = Field(default=datetime.now())

@@ -38,7 +38,7 @@ class ProductsService:
 
 
     async def update_product(self, product_id: int, product_data: UpdateProductSchema,  session: AsyncSession):
-        product_to_update = self.show_product(product_id, session)
+        product_to_update = await self.show_product(product_id, session)
 
         # we will check if the product is not none here
         if product_to_update is not None:
@@ -54,7 +54,7 @@ class ProductsService:
             return None
 
     async def delete_product(self, product_id: int, session: AsyncSession):
-        single_product = self.show_product(product_id, session)
+        single_product = await self.show_product(product_id, session)
         if single_product is not None:
             await session.delete(single_product)
             await session.commit()
