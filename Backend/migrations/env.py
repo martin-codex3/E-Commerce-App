@@ -6,6 +6,7 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 from app.models.products.products_model import ProductModel
 from app.models.auth.User import User
+from app.models.categories.CategoryModel import CategoryModel
 from sqlmodel import SQLModel
 from app.config.app_config import AppConfig
 from alembic import context

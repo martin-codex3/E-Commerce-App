@@ -17,7 +17,6 @@ database_engine = AsyncEngine(
 
 # we will attempt to create the psych engine here
 async def db_init():
-    from app.models.auth.User import User
     async with database_engine.connect() as conn:
         if conn:
             await conn.run_sync(SQLModel.metadata.create_all)

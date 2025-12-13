@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.routes.auth.AuthRoutes import auth_router
 from app.routes.products.ProductsRoutes import products_router
+from app.routes.category.CategoryRoutes import category_router
 from contextlib import asynccontextmanager
 from app.connection.db_connection import db_init
 
@@ -33,6 +34,13 @@ app.include_router(
 # we will inject the other router here
 app.include_router(
     router=products_router,
-    tags=["auth"],
+    tags=["products"],
     prefix=f"/E-commerce-app/{app_version}/products"
+)
+
+# we will inject the category routers here
+app.include_router(
+    router=category_router,
+    tags=["categories"],
+    prefix=f"/E-commerce-app/{app_version}/categories"
 )
