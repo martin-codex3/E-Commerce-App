@@ -1,5 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.asyncio.engine import AsyncEngine
+from sqlalchemy.orm.session import sessionmaker
+from sqlmodel.ext.asyncio.session import AsyncSession
 from app.config.app_config import AppConfig
 from sqlmodel import SQLModel, TEXT
 
@@ -12,7 +14,6 @@ database_engine = AsyncEngine(
     )
 )
 
-# checking if the database exits here
 
 # we will attempt to create the psych engine here
 async def db_init():
@@ -22,3 +23,16 @@ async def db_init():
             await conn.run_sync(SQLModel.metadata.create_all)
         else:
             await conn.close()
+
+
+# the function to get the session here for the
+# different services already defined
+async def get_session() -> AsyncSession:
+    Session = sessionmaker(
+        bind=database_engine,
+        expire_on_commit=False,
+        class_=AsyncSession
+    )
+
+    async with Session() as session:
+        yield session
