@@ -1,5 +1,3 @@
-import datetime
-
 from sqlmodel import SQLModel, Field
 from datetime import datetime
 
@@ -15,5 +13,5 @@ class ProductModel(SQLModel, table = True):
     product_price: float = Field(default=0.0)
     is_product_available: bool = Field(default=False)
     product_category: str = Field(default=None)
-    created_at: datetime.date = Field(default=datetime.date)
-    updated_at: datetime.date = Field(default=datetime.date)
+    created_at: datetime = Field(default=datetime.date)
+    updated_at: datetime = Field(default=datetime.date)
