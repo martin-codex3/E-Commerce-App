@@ -17,4 +17,3 @@ class ProductModel(SQLModel, table = True):
     product_category: str = Field(default=None)
     created_at: datetime.date = Field(default=datetime.date)
     updated_at: datetime.date = Field(default=datetime.date)
-    
