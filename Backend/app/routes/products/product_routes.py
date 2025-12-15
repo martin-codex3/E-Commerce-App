@@ -59,14 +59,13 @@ async def update(product_id: int, product_data: UpdateProductSchema, session: As
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Cannot update the product with that id")
 
 
-
 # for deleting the product here
 @products_router.delete("/{product_id}", status_code=status.HTTP_200_OK)
 async def delete(product_id: int, session: AsyncSession = Depends(get_app_session)):
     product = await product_service.delete_product(product_id = product_id, session = session)
-    if product is not None:
-        return JSONResponse(
-            content="Record deleted successfully"
-        )
+    if product.product_id != product_id:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Failed to delete record with that id")
+    elif product is None:
+        return JSONResponse(content="Record deleted successfully")
     else:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Failed to delete the table")
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Failed to delete the product")
