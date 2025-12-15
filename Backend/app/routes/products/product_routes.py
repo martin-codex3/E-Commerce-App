@@ -9,7 +9,6 @@ from sqlmodel.ext.asyncio.session import AsyncSession
 products_router = APIRouter()
 product_service = ProductService()
 
-
 # for fetching all the products here
 @products_router.get("/", status_code=status.HTTP_200_OK)
 async def index(session: AsyncSession = Depends(get_app_session)):

@@ -6,6 +6,8 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 from alembic import context
 from sqlmodel import SQLModel
+from ..app.config.project_config import ProjectConfig
+from ..app.models.products.product_model import ProductModel
 
 
 # this is the Alembic Config object, which provides
