@@ -11,7 +11,6 @@ async_database_engine = AsyncEngine(
     )
 )
 
-
 # initializing the database here
 async def database_init():
     async with async_database_engine.begin() as connection:
