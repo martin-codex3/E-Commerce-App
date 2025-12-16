@@ -32,6 +32,33 @@ class ProductService:
             return None
 
 
+    async def update_product(self, product_id: int, product_data: UpdateProductSchema, session: AsyncSession):
+        product_to_update = await self.show_single_product(session = session, product_id = product_id)
+
+        if product_to_update is not None:
+            product_to_update_dict = product_data.model_dump()
+
+            for keys, values in product_to_update_dict.items():
+                setattr(product_to_update, keys, values)
+
+            session.add(product_to_update)
+            await session.commit()
+
+            return product_to_update
+        else:
+            return None
+
+
+    async def delete_product(self, product_id: int, session: AsyncSession):
+        product = await self.show_single_product(product_id = product_id, session = session)
+
+        if product is not None:
+            await session.delete(product)
+            return None
+        else:
+            return None
+
+
 
 
 

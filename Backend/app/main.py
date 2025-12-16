@@ -16,7 +16,9 @@ async def app_life_span(app: FastAPI):
 
 app = FastAPI(
     version=app_api_version,
-    lifespan=app_life_span
+    lifespan=app_life_span,
+    title="Backend API",
+    description="The full featured api to manage all the backend tasks for the app"
 )
 
 app.include_router(
