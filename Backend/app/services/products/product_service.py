@@ -11,3 +11,28 @@ class ProductService:
         results = await session.exec(statement)
 
         return results.all()
+
+
+    async def show_single_product(self, session: AsyncSession, product_id: int):
+        statement = select(ProductModel).where(ProductModel.product_id == product_id)
+        results = await session.exec(statement)
+
+        return results.first()
+
+
+    async def create_new_product(self, product_data: CreateProductSchema, session: AsyncSession):
+        product = product_data.model_dump()
+        new_product = ProductModel(**product)
+
+        if new_product is not None:
+            session.add(new_product)
+            await session.commit()
+            return new_product
+        else:
+            return None
+
+
+
+
+
+
