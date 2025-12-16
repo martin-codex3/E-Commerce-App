@@ -54,6 +54,7 @@ class ProductService:
 
         if product is not None:
             await session.delete(product)
+            await session.commit()
             return None
         else:
             return None
