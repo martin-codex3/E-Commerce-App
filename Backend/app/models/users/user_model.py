@@ -9,8 +9,8 @@ class UserModel(SQLModel, table = True):
     first_name: str = Field(index=True)
     last_name: str
     username: str
-    email: str
-    password: str = Field(exclude=True)
+    email: str = Field(unique=True)
+    password: str
     is_verified: bool = Field(default=False)
     created_at: datetime = Field(datetime.now())
     updated_at: datetime = Field(datetime.now())

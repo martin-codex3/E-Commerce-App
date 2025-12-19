@@ -2,7 +2,7 @@ from passlib.context import CryptContext
 
 
 my_context = CryptContext(
-    schemes=["argon2"]
+    schemes=["sha256_crypt"]
 )
 
 # function to get the hashed password
