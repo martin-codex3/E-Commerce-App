@@ -28,4 +28,14 @@ class AuthService:
 
 
     """ the function will attempt to create the new user"""
-    async def create_new_user(self, user_data: Create):
+    async def create_new_user(self, user_data: CreateUserSchema, session: AsyncSession):
+        user_data_dict = user_data.model_dump()
+
+        # we have to pass the data to the model here
+        new_user = UserModel(**user_data_dict)
+
+        # we have to add the data to the session here
+        session.add(new_user)
+        await session.commit()
+        
+        return new_user

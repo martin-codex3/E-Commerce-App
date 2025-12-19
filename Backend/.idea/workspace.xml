@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2613907a-c8e8-458a-b629-630362b658a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/models/users/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/users/user_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/users/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/users/user_schema.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/auth/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/services/auth/auth_service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/auth/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/routes/auth/auth_routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alembic.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/connection/app_database_connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/connection/app_database_connection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/env.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/script.py.mako" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/versions/6792eb810fb9_creating_products_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/auth/auth_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/auth/auth_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
