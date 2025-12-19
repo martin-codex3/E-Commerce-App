@@ -3,8 +3,10 @@ from app.models.users.user_model import UserModel
 from sqlmodel import select
 from pydantic import EmailStr
 from app.schemas.users.user_schema import CreateUserSchema
+from app.utils.password_management import get_hashed_password, verify_password
 
 
+""" the class will hold all the authentication mechanism for the app"""
 class AuthService:
 
     """this function will attempt to fetch the user by their email"""
@@ -35,7 +37,8 @@ class AuthService:
         new_user = UserModel(**user_data_dict)
 
         # we have to add the data to the session here
+        new_user.password = get_hashed_password(user_data_dict["password"])
         session.add(new_user)
         await session.commit()
-        
+
         return new_user
