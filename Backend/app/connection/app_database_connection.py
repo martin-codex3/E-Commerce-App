@@ -18,6 +18,8 @@ async_database_engine = AsyncEngine(
 # initializing the database here
 async def database_init():
     async with async_database_engine.begin() as connection:
+        from app.models.products.product_model import ProductModel
+        from app.models.users.user_model import UserModel
         await connection.run_sync(SQLModel.metadata.create_all)
 
 

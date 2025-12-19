@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2613907a-c8e8-458a-b629-630362b658a2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/services/products/product_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/products/product_service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/users/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/users/user_model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/users/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/schemas/users/user_schema.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/auth/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/services/auth/auth_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alembic.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/connection/app_database_connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/connection/app_database_connection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/env.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/script.py.mako" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/6792eb810fb9_creating_products_table.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,22 +44,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/martinsilungwe/Projects/E-Commerce-App/Backend"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/martinsilungwe/Projects/E-Commerce-App/Backend&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "Requirements"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Requirements&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/services" />
       <recent name="$PROJECT_DIR$/app" />
     </key>
   </component>

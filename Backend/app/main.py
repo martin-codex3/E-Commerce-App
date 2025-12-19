@@ -3,8 +3,8 @@ from app.routes.products.product_routes import product_router
 from contextlib import asynccontextmanager
 from app.connection.app_database_connection import database_init
 
-app_api_version = "v1"
 
+app_api_version = "v1"
 
 # the application life span here
 @asynccontextmanager
