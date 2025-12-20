@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@plugin "@iconify/tailwind4";
+
+
+@theme {
+    /* we will customixe the theme here */
+    --font-primary-main: Inter, sans-serif;
+    --color-primary-background: "";
+    --color-primary-main: "";
+    --color-primary-main-text: "";
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/extras/ttf/Inter-Regular.ttf");
+    font-weight: 500;
+    font-style: normal;
+}
