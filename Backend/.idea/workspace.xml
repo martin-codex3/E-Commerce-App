@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2613907a-c8e8-458a-b629-630362b658a2" name="Changes" comment="" />
+    <list default="true" id="2613907a-c8e8-458a-b629-630362b658a2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/app_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/app_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/jwt_password_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/jwt_password_management.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
