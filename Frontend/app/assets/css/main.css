@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "@iconify/tailwind4";
+@plugin "@tailwindcss/forms";
 
 
 @theme {
@@ -8,6 +9,13 @@
     --color-primary-background: "";
     --color-primary-main: "";
     --color-primary-main-text: "";
+
+    /* for the form inputs here */
+    --color-primary-focus-border: #2f45ff;
+    --color-primary-focus-ring: #2f45ff;
+
+    /* for buttons */
+    --color-primary-main-blue: #2f45ff;
 }
 
 @font-face {

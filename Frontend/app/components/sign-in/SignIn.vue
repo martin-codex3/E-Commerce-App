@@ -6,7 +6,7 @@ const form = reactive({
 });
 
 // function to submit the form data here
-const handleSignUp = () => {
+const handleSignIn = () => {
   console.log(form);
 };
 </script>
@@ -14,29 +14,12 @@ const handleSignUp = () => {
 <template>
   <div class="space-y-5 pt-5">
     <div>
-      <h1 class="capitalize font-semibold text-lg text-center">sign up</h1>
+      <h1 class="capitalize font-semibold text-lg text-center">sign in</h1>
     </div>
 
     <div>
-      <form @submit.prevent="handleSignUp" method="POST">
+      <form @submit.prevent="handleSignIn" method="POST">
         <div class="form__wrapper flex flex-col gap-5">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div>
-              <label for="first_name" class="capitalize">first name</label>
-              <input type="text" id="first_name" class="w-full border rounded-lg py-2" />
-            </div>
-
-            <div>
-              <label for="last_name" class="capitalize">last name</label>
-              <input type="text" id="last_name" class="w-full border rounded-lg py-2" />
-            </div>
-          </div>
-
-          <div>
-            <label for="username" class="capitalize">username</label>
-            <input type="text" id="username" class="w-full border rounded-lg py-2" />
-          </div>
-
           <div>
             <label for="email" class="capitalize">email</label>
             <input type="email" placeholder="@user.com" name="email" id="email" class="w-full border rounded-lg py-2" />
@@ -49,7 +32,7 @@ const handleSignUp = () => {
 
           <div>
             <button arial-label="button" type="submit" class="border-none bg-primary-main-blue transition hover:shadow-xl rounded-full cursor-pointer w-32 text-center py-2">
-              <span class="capitalize text-blue-100 font-semibold">sign up</span>
+              <span class="capitalize text-blue-100 font-semibold">sign in</span>
             </button>
           </div>
         </div>

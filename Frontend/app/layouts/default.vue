@@ -1,10 +1,7 @@
-<script lang="ts">
-    
-</script>
-
+<script lang="ts"></script>
 
 <template>
-    <section class="min-h-screen">
-        <slot/>
-    </section>
+  <section class="min-h-screen w-full">
+    <slot />
+  </section>
 </template>
