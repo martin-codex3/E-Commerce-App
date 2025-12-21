@@ -1,6 +1,9 @@
 <script setup lang="ts">
 // the reactive form state here
 const form = reactive({
+  first_name: "",
+  last_name: "",
+  username: "",
   email: "",
   password: "",
 });
