@@ -5,12 +5,13 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   css: ["./app/assets/css/main.css"],
+  modules: ["@pinia/nuxt"],
   vite: {
     plugins: [tailwindcss()],
   },
   runtimeConfig: {
     public: {
-      apiBase: "/api",
+      apiBase: process.env.BACKEND_URL
     },
   },
 });

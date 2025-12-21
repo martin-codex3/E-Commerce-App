@@ -1,4 +1,7 @@
 <script setup lang="ts">
+
+const runtimeConfig = useRuntimeConfig()
+
 // the reactive form state here
 const form = reactive({
   first_name: "",
@@ -9,8 +12,18 @@ const form = reactive({
 });
 
 // function to submit the form data here
-const handleSignUp = () => {
-  console.log(form);
+const handleSignUp = async () => {
+  await $fetch(`${runtimeConfig.public.apiBase}/create-account`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(form),
+    onResponse(value) {
+      console.log(value)
+    }
+  })
 };
 </script>
 
@@ -26,32 +39,36 @@ const handleSignUp = () => {
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
             <div>
               <label for="first_name" class="capitalize">first name</label>
-              <input type="text" id="first_name" class="w-full border rounded-lg py-2" />
+              <input type="text" id="first_name" v-model="form.first_name"
+                     class="w-full border rounded-lg py-2" />
             </div>
 
             <div>
               <label for="last_name" class="capitalize">last name</label>
-              <input type="text" id="last_name" class="w-full border rounded-lg py-2" />
+              <input type="text" id="last_name" v-model="form.last_name" class="w-full border rounded-lg py-2" />
             </div>
           </div>
 
           <div>
             <label for="username" class="capitalize">username</label>
-            <input type="text" id="username" class="w-full border rounded-lg py-2" />
+            <input type="text" id="username" v-model="form.username" class="w-full border rounded-lg py-2" />
           </div>
 
           <div>
             <label for="email" class="capitalize">email</label>
-            <input type="email" placeholder="@user.com" name="email" id="email" class="w-full border rounded-lg py-2" />
+            <input type="email" placeholder="@user.com" v-model="form.email"
+                   name="email" id="email" class="w-full border rounded-lg py-2" />
           </div>
 
           <div>
             <label for="password" class="capitalize">password</label>
-            <input type="password" name="password" id="password" class="w-full border rounded-lg py-2" />
+            <input type="password" name="password" v-model="form.password"
+                   id="password" class="w-full border rounded-lg py-2" />
           </div>
 
           <div>
-            <button arial-label="button" type="submit" class="border-none bg-primary-main-blue transition hover:shadow-xl rounded-full cursor-pointer w-44 text-center py-2">
+            <button aria-label="button" type="submit" class="border-none bg-primary-main-blue transition
+            hover:shadow-xl rounded-full cursor-pointer w-44 text-center py-2">
               <span class="capitalize text-blue-100 font-semibold">sign up</span>
             </button>
           </div>
