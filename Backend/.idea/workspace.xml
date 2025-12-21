@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2613907a-c8e8-458a-b629-630362b658a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/dependencies/dependency.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Frontend/app/stores/auth/authStore.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/auth/auth_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth/auth_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/products/product_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/products/product_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/schemas/users/user_schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/users/user_schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/auth/auth_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/auth/auth_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/utils/jwt_password_management.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/jwt_password_management.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/app/components/sign-up/SignUp.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/app/components/sign-up/SignUp.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/nuxt.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/nuxt.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
