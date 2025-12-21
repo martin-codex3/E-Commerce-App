@@ -24,3 +24,9 @@ class UpdateUserSchema(BaseModel):
     is_verified: bool = Field(default=False)
     created_at: datetime = Field(datetime.now())
     updated_at: datetime = Field(datetime.now())
+
+
+# for logging in the user here
+class SignInSchema(BaseModel):
+    email: EmailStr
+    password: str = Field(min_length=5, max_length=20)

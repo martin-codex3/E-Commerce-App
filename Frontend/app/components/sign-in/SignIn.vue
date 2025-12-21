@@ -31,7 +31,7 @@ const handleSignIn = () => {
           </div>
 
           <div>
-            <button arial-label="button" type="submit" class="border-none bg-primary-main-blue transition hover:shadow-xl rounded-full cursor-pointer w-32 text-center py-2">
+            <button arial-label="button" type="submit" class="border-none bg-primary-main-blue transition hover:shadow-xl rounded-full cursor-pointer w-44 text-center py-2">
               <span class="capitalize text-blue-100 font-semibold">sign in</span>
             </button>
           </div>

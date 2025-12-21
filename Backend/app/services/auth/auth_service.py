@@ -6,6 +6,7 @@ from app.schemas.users.user_schema import CreateUserSchema
 from app.utils.password_management import get_hashed_password, verify_password
 
 
+
 """ the class will hold all the authentication mechanism for the app"""
 class AuthService:
 

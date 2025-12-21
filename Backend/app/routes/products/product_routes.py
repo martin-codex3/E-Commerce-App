@@ -1,17 +1,20 @@
+from os import access
+
 from fastapi import APIRouter, status, HTTPException
 from fastapi.params import Depends
 from sqlmodel.ext.asyncio.session import AsyncSession
 from app.connection.app_database_connection import get_app_session
 from app.schemas.products.product_schemas import UpdateProductSchema
 from app.services.products.product_service import ProductService, CreateProductSchema
-
+from app.dependencies.dependency import AccessTokenBearer
 
 product_router = APIRouter()
 product_service = ProductService()
+access_token_bearer = AccessTokenBearer()
 
 
 @product_router.get("/", status_code=status.HTTP_200_OK)
-async def index(session: AsyncSession = Depends(get_app_session)):
+async def index(session: AsyncSession = Depends(get_app_session), token = Depends(access_token_bearer)):
     all_products = await product_service.get_all_products(session = session)
     if all_products is not None:
         return all_products

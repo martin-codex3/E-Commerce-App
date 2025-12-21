@@ -1,5 +1,5 @@
 import logging
-
+import uuid
 import jwt
 from datetime import timedelta, datetime
 
@@ -12,11 +12,11 @@ jwt_key = AppConfig.JWT_KEY
 jwt_algorithm = AppConfig.JWT_ALGORITHM
 
 # function to encode the jwt token
-def encode_jwt_token(user_data: dict, expiry: timedelta = None, refresh: bool = False) -> str:
+def create_jwt_token(user_data: dict, expiry: timedelta = None, refresh: bool = False) -> str:
     payload = {
         "user": user_data,
         "exp": datetime.now() + (expiry if expiry is not None else timedelta(minutes=60)),
-        "iat": datetime
+        "jti": str(uuid.uuid4())
     }
 
     token = jwt.encode(
