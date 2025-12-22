@@ -2,6 +2,10 @@
 
 const runtimeConfig = useRuntimeConfig()
 
+// for the loading state and any errors
+const isLoading: boolean = ref(false)
+const formErrors: object = ref({})
+
 // the reactive form state here
 const form = reactive({
   first_name: "",
@@ -13,17 +17,31 @@ const form = reactive({
 
 // function to submit the form data here
 const handleSignUp = async () => {
-  await $fetch(`${runtimeConfig.public.apiBase}/create-account`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify(form),
-    onResponse(value) {
-      console.log(value)
-    }
-  })
+  isLoading.value = true
+  try {
+    await $fetch(`${runtimeConfig.public.apiBase}/api/create-account`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(form),
+      onResponse(value) {
+        if (!value.response.ok) {
+          formErrors.value = value.response._data.detail
+        }
+
+        if (value.response.ok) {
+          // we will show the success message here
+        }
+      }
+    })
+
+  }catch (e) {
+    formErrors.value = e.message
+  }finally {
+    isLoading.value = false
+  }
 };
 </script>
 
@@ -68,8 +86,9 @@ const handleSignUp = async () => {
 
           <div>
             <button aria-label="button" type="submit" class="border-none bg-primary-main-blue transition
-            hover:shadow-xl rounded-full cursor-pointer w-44 text-center py-2">
-              <span class="capitalize text-blue-100 font-semibold">sign up</span>
+            hover:shadow-xl rounded-full cursor-pointer w-44 text-center py-2 flex items-center justify-center">
+              <span v-if="isLoading" class="icon-[svg-spinners--180-ring] text-blue-100 text-xl"></span>
+              <span v-else class="capitalize text-blue-100 font-semibold text-sm">sign up</span>
             </button>
           </div>
         </div>
