@@ -37,6 +37,7 @@ const handleSignUp = async () => {
 
         if (value.response.ok) {
           // we will show the success message here
+          console.log(value)
         }
       }
     })
@@ -58,7 +59,7 @@ const handleSignUp = async () => {
     <div>
       <form @submit.prevent="handleSignUp" method="POST">
         <div class="form__wrapper flex flex-col gap-5">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          <div class="grid grid-cols-2 lg:grid-cols-2 gap-5">
             <div>
               <label for="first_name" class="capitalize">first name</label>
               <input type="text" id="first_name" v-model="form.first_name"
@@ -72,29 +73,52 @@ const handleSignUp = async () => {
 
             <div>
               <label for="last_name" class="capitalize">last name</label>
-              <input type="text" id="last_name" v-model="form.last_name" class="w-full border rounded-lg py-2" />
+              <input type="text" id="last_name" v-model="form.last_name"
+                     :class="formErrors.last_name ? 'border border-red-500 ring ring-red-500' : ''"
+                     class="w-full border rounded-lg py-2" />
+              <span v-if="formErrors.last_name" class="text-form-error text-sm flex items-center gap-1">
+                <span class="icon-[material-symbols--error-outline-rounded]"></span>
+                {{ formErrors.last_name }}
+              </span>
             </div>
           </div>
 
           <div>
             <label for="username" class="capitalize">username</label>
-            <input type="text" id="username" v-model="form.username" class="w-full border rounded-lg py-2" />
+            <input type="text" id="username" v-model="form.username"
+                   :class="formErrors.username ? 'border border-red-500 ring ring-red-500' : ''"
+                   class="w-full border rounded-lg py-2" />
+            <span v-if="formErrors.username" class="text-form-error text-sm flex items-center gap-1">
+                <span class="icon-[material-symbols--error-outline-rounded]"></span>
+                {{ formErrors.username }}
+            </span>
           </div>
 
           <div>
             <label for="email" class="capitalize">email</label>
             <input type="email" placeholder="@user.com" v-model="form.email"
-                   name="email" id="email" class="w-full border rounded-lg py-2" />
+                   name="email" id="email"
+                   :class="formErrors.email ? 'border border-red-500 ring ring-red-500' : ''"
+                   class="w-full border rounded-lg py-2" />
+            <span v-if="formErrors.email" class="text-form-error text-sm flex items-center gap-1">
+                <span class="icon-[material-symbols--error-outline-rounded]"></span>
+                {{ formErrors.email }}
+            </span>
           </div>
 
           <div>
             <label for="password" class="capitalize">password</label>
             <input type="password" name="password" v-model="form.password"
-                   id="password" class="w-full border rounded-lg py-2" />
+                   id="password" class="w-full border rounded-lg py-2"
+                   :class="formErrors.password ? 'border border-red-500 ring ring-red-500' : ''"/>
+            <span v-if="formErrors.password" class="text-form-error text-sm flex items-center gap-1">
+                <span class="icon-[material-symbols--error-outline-rounded]"></span>
+                {{ formErrors.password }}
+            </span>
           </div>
 
           <div>
-            <button aria-label="button" type="submit" class="border-none bg-primary-main-blue transition
+            <button aria-label="button" type="submit" :disabled="isLoading" class="border-none bg-primary-main-blue transition
             hover:shadow-xl rounded-full cursor-pointer w-44 text-center py-2 flex items-center justify-center">
               <span v-if="isLoading" class="icon-[svg-spinners--180-ring] text-blue-100 text-xl"></span>
               <span v-else class="capitalize text-blue-100 font-semibold text-sm">sign up</span>
