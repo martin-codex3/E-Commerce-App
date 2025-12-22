@@ -10,6 +10,9 @@
     --color-primary-main: "";
     --color-primary-main-text: "";
 
+    /* =========== for the main white color =======*/
+    --color-primary-main-white: #ffffff;
+
     /* for the form inputs here */
     --color-primary-focus-border: #2f45ff;
     --color-primary-focus-ring: #2f45ff;

@@ -16,7 +16,15 @@ const handleToggleCounter = (index: number) => {
   <section class="grid grid-cols-1 md:grid md:grid-cols-1 lg:grid lg:grid-cols-2 place-content-center">
     <!-- for the side landing page -->
     <div>
-      <div class="hidden lg:block bg-gray-100 h-screen"></div>
+      <div class="hidden lg:block bg-gray-100 h-screen px-5 py-5">
+        <div>
+          <div class="bg-primary-main-white w-32 rounded-full">hey</div>
+        </div>
+
+        <div>
+          <img src="/images/maddox-furlong-1IRnESiBIU4-unsplash.jpg"/>
+        </div>
+      </div>
     </div>
 
     <!-- for the main login form here -->

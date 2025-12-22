@@ -1,7 +1,8 @@
 <script setup lang="ts">
-
 const runtimeConfig = useRuntimeConfig()
 
+// for the toast notification here
+const toast = useToast()
 // for the loading state and any errors
 const isLoading: boolean = ref(false)
 const formErrors: object = ref({})
@@ -30,15 +31,22 @@ const handleSignUp = async () => {
       body: JSON.stringify(form),
       onResponse(value) {
         if (!value.response.ok) {
+          console.log(value.response._data.detail.message)
           value.response._data.detail.forEach((error: any) => {
             formErrors.value[error.loc[1]] = error.msg
           })
+
+          toast.add({severity: "error", summary: "Error", detail: "Correct the errors and try again!"})
         }
 
         if (value.response.ok) {
           // we will show the success message here
           console.log(value)
         }
+      },
+
+      onResponseError(value) {
+        console.log(value)
       }
     })
 
@@ -51,6 +59,7 @@ const handleSignUp = async () => {
 </script>
 
 <template>
+  <Toast position="top-left"/>
   <div class="space-y-5 pt-5">
     <div>
       <h1 class="capitalize font-semibold text-lg text-center">sign up</h1>
