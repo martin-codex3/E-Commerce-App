@@ -23,7 +23,9 @@ async def create_account(user_data: CreateUserSchema, session: AsyncSession = De
     user_exists = await auth_services.check_if_user_exists(email = email, session = session)
 
     if user_exists:
-        raise HTTPException(status_code = status.HTTP_403_FORBIDDEN, detail="Email address already taken, try another email")
+        raise HTTPException(status_code = status.HTTP_403_FORBIDDEN, detail={
+            "message": "Email address already taken, try another email"
+        })
 
     else:
         new_user = await auth_services.create_new_user(

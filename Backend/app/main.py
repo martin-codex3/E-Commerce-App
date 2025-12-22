@@ -7,9 +7,6 @@ from app.routes.auth.auth_routes import auth_router
 # for the middlewares here
 from fastapi.middleware.cors import CORSMiddleware
 
-
-
-
 app_api_version = "v1"
 
 # the application life span here
@@ -46,12 +43,12 @@ app.add_middleware(
 app.include_router(
     router=product_router,
     tags=["products"],
-    prefix=f"/api/{app_api_version}/products"
+    prefix=f"/api"
 )
 
 # authentication routes here
 app.include_router(
     router=auth_router,
     tags=["authentication"],
-    prefix=f"/api/{app_api_version}/authentication"
+    prefix=f"/api"
 )
