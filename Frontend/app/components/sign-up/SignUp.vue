@@ -18,6 +18,8 @@ const form = reactive({
 // function to submit the form data here
 const handleSignUp = async () => {
   isLoading.value = true
+  formErrors.value = {}
+
   try {
     await $fetch(`${runtimeConfig.public.apiBase}/api/create-account`, {
       method: "POST",
@@ -31,8 +33,6 @@ const handleSignUp = async () => {
           value.response._data.detail.forEach((error: any) => {
             formErrors.value[error.loc[1]] = error.msg
           })
-          console.log(formErrors.value.first_name)
-
         }
 
         if (value.response.ok) {
@@ -42,7 +42,7 @@ const handleSignUp = async () => {
     })
 
   }catch (e) {
-    formErrors.value = e.message
+    return
   }finally {
     isLoading.value = false
   }
@@ -62,8 +62,12 @@ const handleSignUp = async () => {
             <div>
               <label for="first_name" class="capitalize">first name</label>
               <input type="text" id="first_name" v-model="form.first_name"
-                     class="w-full border rounded-lg py-2" />
-              <span v-if="formErrors">{{ formErrors.first_name }}</span>
+                     :class="formErrors.first_name ? 'border border-red-500 ring ring-red-500' : ''"
+                     class="w-full border rounded-lg py-2"/>
+              <span v-if="formErrors.first_name" class="text-form-error text-sm flex items-center gap-1">
+                <span class="icon-[material-symbols--error-outline-rounded]"></span>
+                {{ formErrors.first_name }}
+              </span>
             </div>
 
             <div>

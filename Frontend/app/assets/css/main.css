@@ -16,6 +16,9 @@
 
     /* for buttons */
     --color-primary-main-blue: #2f45ff;
+
+    /* ======== for the form error =========== */
+    --color-form-error: #ff2323;
 }
 
 @font-face {
