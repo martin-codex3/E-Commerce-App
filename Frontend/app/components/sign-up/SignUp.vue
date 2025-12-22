@@ -28,7 +28,11 @@ const handleSignUp = async () => {
       body: JSON.stringify(form),
       onResponse(value) {
         if (!value.response.ok) {
-          formErrors.value = value.response._data.detail
+          value.response._data.detail.forEach((error: any) => {
+            formErrors.value[error.loc[1]] = error.msg
+          })
+          console.log(formErrors.value.first_name)
+
         }
 
         if (value.response.ok) {
@@ -59,6 +63,7 @@ const handleSignUp = async () => {
               <label for="first_name" class="capitalize">first name</label>
               <input type="text" id="first_name" v-model="form.first_name"
                      class="w-full border rounded-lg py-2" />
+              <span v-if="formErrors">{{ formErrors.first_name }}</span>
             </div>
 
             <div>
