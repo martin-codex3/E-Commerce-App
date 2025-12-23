@@ -33,7 +33,13 @@ async def create_account(user_data: CreateUserSchema, session: AsyncSession = De
             session = session
         )
 
-        return new_user
+        return JSONResponse(
+            content={
+                "message": "Account created successfully",
+                "new_user": new_user,
+            },
+            status_code=status.HTTP_201_CREATED
+        )
 
 
 # the route for logging the users in
