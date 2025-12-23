@@ -4,8 +4,9 @@ const runtimeConfig = useRuntimeConfig()
 // for the toast notification here
 const toast = useToast()
 // for the loading state and any errors
-const isLoading: boolean = ref(false)
-const formErrors: object = ref({})
+const isLoading: boolean = ref(false);
+const formErrors: object = ref({});
+const emailError: string = ref("");
 
 // the reactive form state here
 const form = reactive({
@@ -20,6 +21,7 @@ const form = reactive({
 const handleSignUp = async () => {
   isLoading.value = true
   formErrors.value = {}
+  emailError.value = ""
 
   try {
     await $fetch(`${runtimeConfig.public.apiBase}/api/create-account`, {
@@ -30,24 +32,32 @@ const handleSignUp = async () => {
       },
       body: JSON.stringify(form),
       onResponse(value) {
+        if (value.response._data.detail.message) {
+          emailError.value = value.response._data.detail.message
+        }
         if (!value.response.ok) {
-          console.log(value.response._data.detail.message)
           value.response._data.detail.forEach((error: any) => {
             formErrors.value[error.loc[1]] = error.msg
           })
-
-          toast.add({severity: "error", summary: "Error", detail: "Correct the errors and try again!"})
+          toast.add({
+            severity: "error",
+            summary: "Error",
+            life: 10000,
+            detail: "Correct the errors and try again!"
+          })
         }
+
 
         if (value.response.ok) {
           // we will show the success message here
-          console.log(value)
+          toast.add({
+            severity: "success",
+            summary: "Success",
+            life: 10000,
+            detail: "Account created successfully"
+          })
         }
       },
-
-      onResponseError(value) {
-        console.log(value)
-      }
     })
 
   }catch (e) {
@@ -107,11 +117,16 @@ const handleSignUp = async () => {
             <label for="email" class="capitalize">email</label>
             <input type="email" placeholder="@user.com" v-model="form.email"
                    name="email" id="email"
-                   :class="formErrors.email ? 'border border-red-500 ring ring-red-500' : ''"
+                   :class="formErrors.email || emailError ? 'border border-red-500 ring ring-red-500' : ''"
                    class="w-full border rounded-lg py-2" />
             <span v-if="formErrors.email" class="text-form-error text-sm flex items-center gap-1">
                 <span class="icon-[material-symbols--error-outline-rounded]"></span>
                 {{ formErrors.email }}
+            </span>
+
+            <span v-else-if="emailError" class="text-form-error text-sm flex items-center gap-1">
+                <span class="icon-[material-symbols--error-outline-rounded]"></span>
+                {{ emailError }}
             </span>
           </div>
 

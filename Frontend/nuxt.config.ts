@@ -9,6 +9,18 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["./app/assets/css/main.css"],
   modules: ["@pinia/nuxt", '@primevue/nuxt-module', "@nuxt/image"],
+  image: {
+    inject: true,
+    quality: 80,
+    screens: {
+      'sm': 640,
+      'md': 768,
+      'lg': 1024,
+      'xl': 1280,
+      '2xl': 1536
+    }
+  },
+
   primevue: {
     options: {
       theme: {
