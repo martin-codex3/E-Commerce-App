@@ -3,6 +3,7 @@ from app.routes.products.product_routes import product_router
 from contextlib import asynccontextmanager
 from app.connection.app_database_connection import database_init
 from app.routes.auth.auth_routes import auth_router
+from app.config.app_config import AppConfig
 
 # for the middlewares here
 from fastapi.middleware.cors import CORSMiddleware
@@ -26,9 +27,9 @@ app = FastAPI(
 
 # for the allowed origins here
 origins = [
-    "http://localhost:3000",
-    "http://localhost:8000",
-    "localhost"
+    AppConfig.ALLOWED_ORIGIN_ONE,
+    AppConfig.ALLOWED_ORIGIN_TWO,
+    AppConfig.ALLOWED_ORIGIN_THREE,
 ]
 
 # for the allowed origins
