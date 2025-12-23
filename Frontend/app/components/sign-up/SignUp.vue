@@ -26,15 +26,35 @@ const handleSignUp = async () => {
   try {
     await $fetch(`${runtimeConfig.public.apiBase}/api/create-account`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
       body: JSON.stringify(form),
       onResponse(value) {
-        if (value.response._data.detail.message) {
-          emailError.value = value.response._data.detail.message
+        // if the form is okay here//
+        if (value.response.ok) {
+          // we will show the success message here
+          toast.add({
+            severity: "success",
+            summary: "Success",
+            life: 10000,
+            detail: "Account created successfully"
+          })
         }
+        // checking if the passed email already exists here
+        if (value.response._data.detail.message) {
+          emailError.value = value.response._data.detail.message;
+          // for the already available email here
+          toast.add({
+            severity: "error",
+            summary: "Error",
+            life: 10000,
+            detail: "Correct the errors and try again!"
+          })
+        }
+        // errors will be caught here if the form has any errors
         if (!value.response.ok) {
           value.response._data.detail.forEach((error: any) => {
             formErrors.value[error.loc[1]] = error.msg
@@ -48,15 +68,6 @@ const handleSignUp = async () => {
         }
 
 
-        if (value.response.ok) {
-          // we will show the success message here
-          toast.add({
-            severity: "success",
-            summary: "Success",
-            life: 10000,
-            detail: "Account created successfully"
-          })
-        }
       },
     })
 
