@@ -45,7 +45,7 @@ async def create_account(user_data: CreateUserSchema, session: AsyncSession = De
                     "updated_at": str(user.updated_at)
                 },
             },
-            status_code=status.HTTP_201_CREATED
+            status_code=status.HTTP_200_OK
         )
 
 
@@ -107,4 +107,7 @@ async def login(user_data: SignInSchema, session: AsyncSession = Depends(get_app
             raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Invalid Password")
 
     else:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Invalid Email or Password")
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail={"message": "Invalid Email or Password"}
+        )
