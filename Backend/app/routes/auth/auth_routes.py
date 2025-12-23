@@ -28,7 +28,7 @@ async def create_account(user_data: CreateUserSchema, session: AsyncSession = De
         })
 
     else:
-        new_user = await auth_services.create_new_user(
+        user = await auth_services.create_new_user(
             user_data = user_data,
             session = session
         )
@@ -36,7 +36,14 @@ async def create_account(user_data: CreateUserSchema, session: AsyncSession = De
         return JSONResponse(
             content={
                 "message": "Account created successfully",
-                "new_user": new_user,
+                "user": {
+                    "email": user.email,
+                    "first_name": user.first_name,
+                    "last_name": user.last_name,
+                    "username": user.username,
+                    "created_at": str(user.created_at),
+                    "updated_at": str(user.updated_at)
+                },
             },
             status_code=status.HTTP_201_CREATED
         )
